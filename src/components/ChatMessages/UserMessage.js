@@ -1,7 +1,11 @@
-function UserMessage() {
+import './ChatMessages.css'
+
+function UserMessage(props) {
     return (
-        <div>
-            <p>Hi</p>
+        <div className="user-message-container">
+            <div className="user-message-data"><p><span>{props.name}</span> <span>{props.timestamp}</span></p></div>
+            <div className="user-message-text">{props.text}
+               </div>
         </div>
     );
 }
