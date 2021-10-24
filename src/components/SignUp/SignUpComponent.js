@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './SignUp.css'
+import {Link} from "react-router-dom";
 
 
 
@@ -44,6 +45,9 @@ export default function SignUpComponent (){
                     <input type="password" placeholder="Confirm password" name="confirmPassword" />
                     <button type="submit" className="btn-signUp">Sign up</button>
                 </form>
+                <div>
+                    <p className="p-already-register">Already registered? <Link to="/login">Sign in</Link></p>
+                </div>
             </div>
         </div>
     )
