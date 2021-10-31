@@ -73,3 +73,7 @@ input:focus {
     color: white;
     text-decoration: underline;
 }
+
+.error {
+    color: red;
+}
