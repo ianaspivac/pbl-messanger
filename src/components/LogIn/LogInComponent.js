@@ -1,23 +1,19 @@
 import React, {useState} from "react";
 import './LogIn.css'
 import logo from '../../images/fox-head 1.svg'
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import {postLogin} from "../../services/postLogin";
 export default function LogInComponent () {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const history = useHistory();
 
     const submitHandler = (event) =>{
         event.preventDefault();
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email, password: password })
-        };
 
-        fetch('http://localhost:8080/user/login', requestOptions)
-            .then(response => console.log(response))
-
-
+        const response = postLogin({email: email, password: password});
+        localStorage.setItem('userId', response.data.id.toString());
+        history.push('/chats');
     }
 
     return(
