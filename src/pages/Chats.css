@@ -1,4 +1,7 @@
 .chats-wrapper {
     display: flex;
     flex-direction: row;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 20px;
 }
