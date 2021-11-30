@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './SignUp.css'
 import {Link, useHistory} from "react-router-dom";
+import {postSignUp} from "../../services/postSignUp";
 
 
 
@@ -97,16 +98,9 @@ export default function SignUpComponent (){
 
     const submitHandler = (event) =>{
         event.preventDefault();
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ full_name: fullName, email: email, password: password })
-        };
 
-        fetch('http://localhost:8080/user/register', requestOptions)
-            .then(response => console.log(response))
-            .then(history.push("/login"))
-
+        const response = postSignUp({full_name: fullName, email: email, password: password});
+        history.push("/login");
     }
 
     return(
