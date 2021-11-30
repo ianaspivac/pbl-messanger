@@ -1,0 +1,35 @@
+header {
+    background: #403F4C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom:5px;
+}
+
+.header-logo {
+    height: 40px;
+}
+
+.header-logo img {
+    height: 100%;
+    width: 100%;
+}
+
+.header-nav-list {
+    display: flex;
+    font-weight: 600;
+    gap: 20px;
+}
+
+.header-nav-list li:hover {
+    color: #FF5C00;
+    cursor: pointer;
+}
+
+.header-logout {
+    color: #A2A2A2;
+    padding-left:20px;
+}
