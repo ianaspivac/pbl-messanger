@@ -1,0 +1,151 @@
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.popup-container {
+    margin: 70px auto;
+    padding: 20px;
+    background: #403F4C;
+    border-radius: 20px;
+    width: 250px;
+    height: 500px;
+    max-height: 70vh;
+    position: relative;
+    transition: all 3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.privacy-button {
+    background: url("/src/images/padlock.svg") no-repeat left;
+}
+
+.change-photo-button {
+    background: url("/src/images/image-icon.svg") no-repeat left;
+}
+
+.popup-option-button {
+    cursor: pointer;
+    padding: 10px 15px 10px 20px;
+    background-size: 15px;
+    border: none;
+    color: inherit;
+    font-size: 16px
+}
+
+.logout-button {
+    color: #A2A2A2;
+    border: none;
+    background: none;
+    font-size: 16px
+}
+
+.popup-input {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    width: 230px;
+    height: 30px;
+    font-size: 16px;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+.popup-form-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: auto;
+}
+
+.popup-submit {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+    color: white;
+    background: #FF3D00;
+    padding: 0;
+}
+
+.back-button {
+    background: none;
+    color: #A2A2A2;
+}
+
+.popup-photo-select-btn,
+input[type=file]::-webkit-file-upload-button {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+    box-shadow: none;
+    font-size: 16px;
+    color: white;
+    background: none;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.confirm, .undo {
+    color: transparent;
+}
+
+.confirm {
+    background: url("/src/images/accept.svg") no-repeat center center;
+}
+
+.undo, .popup-close {
+    background: url("/src/images/close.svg") no-repeat center center;
+    background-size: 15px;
+}
+
+.popup-close {
+    height: 40px;
+    width: 40px;
+    margin-left: auto;
+    border: none;
+}
+
+.popup-photo {
+    height: 125px;
+    width: 125px;
+    margin-bottom: 20px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.popup-photo img {
+    object-fit: cover;
+}
+
+.popup-photo img {
+    height: 100%;
+    width: 100%;
+}
+
+.popup-name {
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 20px
+}
+.popup-headline{
+    font-size:22px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.popup-accept {
+    margin-bottom: 10px;
+}
