@@ -1,16 +1,24 @@
+.App > div {
+    margin: 0 !important;
+    position: relative !important;
+    right: inherit !important;
+    left: inherit !important;
+}
+
 .wrapper{
     margin-top: 168px
 }
 
-.header{
+.header {
     font-style: normal;
     font-weight: bold !important;
     font-size: 60px;
     color: #A2A2A2;
-
-    margin-left: 611px;
+    /*margin-left: 611px;
     margin-right: 576px;
-    margin-bottom: 39px;
+    margin-bottom: 39px;*/
+    text-align: center;
+    white-space: nowrap;
 }
 
 .form{
@@ -73,3 +81,4 @@ input:focus {
     color: white;
     text-decoration: underline;
 }
+
