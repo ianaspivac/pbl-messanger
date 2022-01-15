@@ -1,9 +1,12 @@
-import ChatMessages from "../components/ChatMessages/ChatMessages";
+import ChatMessages from "../components/ChatMessages/ChatMessages"
+import DialogComponent from "../components/Dialogs/DialogComponent"
+import "./Chats.css"
 
 function Chats() {
     return (
-        <div>
-           <ChatMessages/>
+        <div className="chats-wrapper">
+            <DialogComponent/>
+            <ChatMessages/>
         </div>
     );
 }
