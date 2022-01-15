@@ -68,6 +68,16 @@ function ChatMessages() {
             });
     }
 
+    const textSentHandler = (text) =>{
+
+      setDialog((dialog)=> [...dialog,{
+        text,
+        userId: 2,
+        timestamp: transformUnix(Date.now()),
+        name: "May"
+      }])
+    }
+
     useEffect(() => {
         getDialog()
     }, [])
@@ -81,7 +91,7 @@ function ChatMessages() {
                 {dialog.length < 0 &&
                 <div className="chat-messages-container-empty">Write first to start chatting</div>}
             </div>
-            <SendMessage/>
+            <SendMessage onTextSent={textSentHandler}/>
         </div>
     );
 }

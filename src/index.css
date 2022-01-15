@@ -1,14 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
 body {
-  font-family: 'Lato', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #2C2B3C;
-  color:white;
-  font-size:16px;
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #2C2B3C;
+    color: white;
+    font-size: 16px;
+    margin: 0;
+}
+
+input, button {
+    font-family: inherit;
+    border: none;
+}
+
+button {
+    cursor: pointer;
+    background-color: #FF3D00;
+    color: white;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul {
+    list-style: none;
 }
