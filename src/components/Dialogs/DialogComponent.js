@@ -29,11 +29,9 @@ export default function DialogComponent(props) {
         }
       }
     ).then(function (response) {
-      console.log(response)
       return response.json();
     })
       .then(function (data) {
-        console.log(data);
         const dialogs = data.data;
         const dialogList = []
         for (const dialog in dialogs) {
@@ -44,7 +42,6 @@ export default function DialogComponent(props) {
         }
         setDialogs(dialogList)
         setInitialDialogs(dialogList)
-        console.log(dialogs)
       });
   }
 
@@ -64,17 +61,12 @@ export default function DialogComponent(props) {
       .then((response) => {
         if (response.ok) {
           return response.json();
-        } else {
-          response.json().then((data) => {
-            console.log(data);
-          });
         }
       }).then(function (data) {
         setInitialDialogs((initialDialogs) => [...initialDialogs, {
           name,
           id: data.data.id
         }])
-        console.log(data.data.id)
         setDialogs((dialogs) => [...dialogs, {
           name,
           id: data.data.id
@@ -89,7 +81,12 @@ export default function DialogComponent(props) {
   };
 
   useEffect(() => {
-    getDialogs()
+    const interval = setInterval(() => {
+      getDialogs()
+    }, 5000);
+    return () => {
+      clearInterval(interval);
+    };
   }, [])
 
   return (

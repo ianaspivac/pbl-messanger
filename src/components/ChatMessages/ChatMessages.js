@@ -37,11 +37,9 @@ function ChatMessages(props) {
         }
       }
     ).then(function (response) {
-      console.log(response)
       return response.json();
     })
       .then(function (data) {
-        console.log(data);
         const messagesList = []
         for (const message in data.data) {
           messagesList.push({
@@ -52,7 +50,6 @@ function ChatMessages(props) {
           })
         }
         setDialog(messagesList)
-        console.log(dialog)
       });
   }
 
@@ -84,7 +81,7 @@ function ChatMessages(props) {
           return response.json();
         } else {
           response.json().then((data) => {
-            console.log(data);
+            alert(`Invalid email`)
           });
         }
       })
@@ -92,7 +89,12 @@ function ChatMessages(props) {
   };
 
   useEffect(() => {
-    getDialog()
+    const interval = setInterval(() => {
+      getDialog()
+    }, 3000);
+    return () => {
+      clearInterval(interval);
+    };
   }, [props.roomId])
 
   return (

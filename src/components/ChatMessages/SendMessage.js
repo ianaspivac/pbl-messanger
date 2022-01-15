@@ -15,7 +15,6 @@ function SendMessage(props) {
   const sendMessage = (event) => {
     event.preventDefault()
     props.onTextSent(event.target.value)
-    console.log(enteredText)
 
     fetch(
       `http://81.180.72.35:8080/message/create/${userId}`,
@@ -30,15 +29,9 @@ function SendMessage(props) {
       .then((response) => {
         if (response.ok) {
           return response.json();
-        } else {
-          response.json().then((data) => {
-            console.log(data);
-          });
         }
       })
-      .then((data) => {
-        //update the dialog
-      });
+
     setEnteredText("")
   }
 
