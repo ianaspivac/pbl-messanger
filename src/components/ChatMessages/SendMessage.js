@@ -1,10 +1,11 @@
 import './ChatMessages.css'
 import {useRef, useState} from 'react'
+import {useSelector} from "react-redux";
 
 function SendMessage(props) {
+  const userId = useSelector((state) => state.userId);
   const textInputRef = useRef();
-  //currentid will be saved somewhere on store
-  const currentId = 2
+
   const [enteredText, setEnteredText] = useState("");
 
   const getTextHandler = (event) => {
@@ -15,28 +16,29 @@ function SendMessage(props) {
     event.preventDefault()
     props.onTextSent(event.target.value)
     console.log(enteredText)
-    // fetch(
-    //     ``,
-    //     {
-    //         method: "POST",
-    //         body: JSON.stringify({enteredText,Date.now(),currentId}),
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //     }
-    // )
-    //     .then((response) => {
-    //         if (response.ok) {
-    //             return response.json();
-    //         } else {
-    //             response.json().then((data) => {
-    //                 console.log(data);
-    //             });
-    //         }
-    //     })
-    //     .then((data) => {
-    //        //update the dialog
-    //     });
+
+    fetch(
+      `http://81.180.72.35:8080/message/create/${userId}`,
+      {
+        method: "POST",
+        body: JSON.stringify({data: enteredText, room_id: props.roomId}),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          response.json().then((data) => {
+            console.log(data);
+          });
+        }
+      })
+      .then((data) => {
+        //update the dialog
+      });
     setEnteredText("")
   }
 

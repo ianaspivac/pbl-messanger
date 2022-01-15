@@ -1,99 +1,126 @@
 import UserMessage from "./UserMessage";
 import OtherUserMessage from "./OtherUserMessage";
 import SendMessage from "./SendMessage";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
+import avatar from '../../images/fox-avatar.svg'
+import plus from '../../images/plus.svg'
+import {useSelector} from "react-redux";
 
-function ChatMessages() {
-    const currentUserId = 2;
-    const [dialog, setDialog] = useState([]);
+function ChatMessages(props) {
+  const [dialog, setDialog] = useState([]);
+  const [showAdd, setShowAdd] = useState(false);
+  const inviteInputRef = useRef();
+  const userId = useSelector((state) => state.userId);
 
-    const transformUnix = (unixTimestamp) => {
-        let date = new Date(unixTimestamp * 1000);
-        let hours = date.getHours();
-        let minutes = "0" + date.getMinutes();
-        return hours + ':' + minutes.substr(-2)
-    };
+  const transformUnix = (unixTimestamp) => {
+    let date = new Date(unixTimestamp * 1000);
+    let hours = date.getHours();
+    let minutes = "0" + date.getMinutes();
+    return hours + ':' + minutes.substr(-2)
+  };
 
-    const typeMessage = (userId, timestamp, text, name) => {
-        if (userId != currentUserId) {
-            return <OtherUserMessage
-                timestamp={timestamp} text={text} name={name}/>
-        } else {
-            return <UserMessage timestamp={timestamp} text={text} name={name}/>
+  const typeMessage = (id, timestamp, text, name) => {
+    if (id != userId) {
+      return <OtherUserMessage
+        timestamp={timestamp} text={text} name={name}/>
+    } else {
+      return <UserMessage timestamp={timestamp} text={text} name="Me"/>
+    }
+  }
+
+  const getDialog = () => {
+    fetch(`http://81.180.72.35:8080/message/${props.roomId}`
+      , {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         }
+      }
+    ).then(function (response) {
+      console.log(response)
+      return response.json();
+    })
+      .then(function (data) {
+        console.log(data);
+        const messagesList = []
+        for (const message in data.data) {
+          messagesList.push({
+            text: data.data[message].data,
+            userId: data.data[message].sender_id,
+            timestamp: transformUnix(data.data[message].time),
+            name: data.data[message].sender_name
+          })
+        }
+        setDialog(messagesList)
+        console.log(dialog)
+      });
+  }
 
+  const textSentHandler = (text) => {
+    setDialog((dialog) => [...dialog, {
+      text,
+      userId,
+      timestamp: transformUnix(Date.now()),
+      name: "Me"
+    }])
+  }
 
-    }
+  const sendInvite = (event) => {
+    event.preventDefault()
+    const inviteEmail = inviteInputRef.current.value;
+    fetch(
+      `http://81.180.72.35:8080/room/add/${userId}`,
+      {
+        method: "POST",
+        body: JSON.stringify({participant_email: inviteEmail, room_id: props.roomId}),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert(`Invited ${inviteEmail} to this room`)
+          return response.json();
+        } else {
+          response.json().then((data) => {
+            console.log(data);
+          });
+        }
+      })
+    setShowAdd(false)
+  };
 
-    const getDialog = () => {
-        fetch('./dialogData.json'
-            , {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            }
-        ).then(function (response) {
-            console.log(response)
-            return response.json();
-        })
-            .then(function (data) {
-                console.log(data);
-                fetch('./userData.json'
-                    , {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        }
-                    }
-                ).then(function (response) {
-                    console.log(response)
-                    return response.json();
-                })
-                    .then(function (dataUser) {
-                        console.log(dataUser);
-                        const messagesList = []
-                        for (const message in data.room) {
-                            messagesList.push({
-                                text: data.room[message].data,
-                                userId: data.room[message].userid,
-                                timestamp: transformUnix(data.room[message].timestamp),
-                                name: dataUser[data.room[message].userid].name
-                            })
-                        }
-                        setDialog(messagesList)
-                        console.log(dialog)
-                    });
+  useEffect(() => {
+    getDialog()
+  }, [props.roomId])
 
-            });
-    }
-
-    const textSentHandler = (text) =>{
-
-      setDialog((dialog)=> [...dialog,{
-        text,
-        userId: 2,
-        timestamp: transformUnix(Date.now()),
-        name: "May"
-      }])
-    }
-
-    useEffect(() => {
-        getDialog()
-    }, [])
-
-    return (
-        <div className="chat-messages-container">
-            <div className="chat-messages-dialog-container">
-                {
-                    dialog && dialog.length > 0 && dialog.map((message) => typeMessage(message.userId, message.timestamp, message.text, message.name))
-                }
-                {dialog.length < 0 &&
-                <div className="chat-messages-container-empty">Write first to start chatting</div>}
-            </div>
-            <SendMessage onTextSent={textSentHandler}/>
-        </div>
-    );
-}
+  return (
+    <div className="chat-messages-container">
+      {showAdd && <div className="chat-add-participant">
+        <div className="heading">Add a participant</div>
+        <form onSubmit={sendInvite}>
+          <input type="email" placeholder="Enter user's email" ref={inviteInputRef}/>
+          <input type="image" src={plus} alt="Add user"/>
+        </form>
+      </div>}
+      <div className="chat-messages-header">
+        <div className="chat-messages-avatar"><img src={avatar}/></div>
+        <span>{props.roomName}</span>
+        <button className="chat-messages-add" onClick={() => setShowAdd(true)}><img src={plus} alt="Add participants"/>
+        </button>
+        <button className="chat-messages-back">&lt;-Back</button>
+      </div>
+      <div className="chat-messages-dialog-container">
+        {
+          dialog && dialog.length > 0 && dialog.map((message) => typeMessage(message.userId, message.timestamp, message.text, message.name))
+        }
+        {dialog.length < 0 &&
+        <div className="chat-messages-container-empty">Write first to start chatting</div>}
+      </div>
+      <SendMessage roomId={props.roomId} onTextSent={textSentHandler}/>
+    </div>
+  );
+};
 
 export default ChatMessages;

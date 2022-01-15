@@ -17,3 +17,9 @@
     color: #A2A2A2;
     margin-top: 0;
 }
+
+.error-invalid {
+    font-size: 11px;
+    color: red;
+    margin: -20px;
+}
