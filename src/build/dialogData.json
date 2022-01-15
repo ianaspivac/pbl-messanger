@@ -1,0 +1,34 @@
+{
+  "room": [
+    {
+      "userid": 1,
+      "timestamp": "1634994811",
+      "data": "lorem ipsum"
+    },
+    {
+      "userid": 1,
+      "timestamp": "1634994811",
+      "data": "lorem ipsum"
+    },
+    {
+      "userid": 1,
+      "timestamp": "1634994811",
+      "data": "lorem ipsum"
+    },
+    {
+      "userid": 1,
+      "timestamp": "1634998505",
+      "data": "lorem ipsum"
+    },
+    {
+      "userid": 2,
+      "timestamp": "1634998505",
+      "data": "hey"
+    },
+    {
+      "userid": 2,
+      "timestamp": "1634998505",
+      "data": "hello my friend"
+    }
+  ]
+}

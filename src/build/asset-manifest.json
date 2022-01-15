@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ce27d8a5.chunk.css",
+    "main.js": "/static/js/main.16309114.chunk.js",
+    "main.js.map": "/static/js/main.16309114.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.81d463e2.js",
+    "runtime-main.js.map": "/static/js/runtime-main.81d463e2.js.map",
+    "static/css/2.e9335a12.chunk.css": "/static/css/2.e9335a12.chunk.css",
+    "static/js/2.bcd698a4.chunk.js": "/static/js/2.bcd698a4.chunk.js",
+    "static/js/2.bcd698a4.chunk.js.map": "/static/js/2.bcd698a4.chunk.js.map",
+    "static/js/3.7859b5df.chunk.js": "/static/js/3.7859b5df.chunk.js",
+    "static/js/3.7859b5df.chunk.js.map": "/static/js/3.7859b5df.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.e9335a12.chunk.css.map": "/static/css/2.e9335a12.chunk.css.map",
+    "static/css/main.ce27d8a5.chunk.css.map": "/static/css/main.ce27d8a5.chunk.css.map",
+    "static/js/2.bcd698a4.chunk.js.LICENSE.txt": "/static/js/2.bcd698a4.chunk.js.LICENSE.txt",
+    "static/media/Popup.css": "/static/media/padlock.b5c18757.svg",
+    "static/media/add.061309f3.svg": "/static/media/add.061309f3.svg",
+    "static/media/fox-avatar.a14ed2dc.svg": "/static/media/fox-avatar.a14ed2dc.svg",
+    "static/media/fox-head 1.e9972e00.svg": "/static/media/fox-head 1.e9972e00.svg",
+    "static/media/photo-default.4c56727e.svg": "/static/media/photo-default.4c56727e.svg",
+    "static/media/plus.c60e15f2.svg": "/static/media/plus.c60e15f2.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.81d463e2.js",
+    "static/css/2.e9335a12.chunk.css",
+    "static/js/2.bcd698a4.chunk.js",
+    "static/css/main.ce27d8a5.chunk.css",
+    "static/js/main.16309114.chunk.js"
+  ]
+}
