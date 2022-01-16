@@ -1,24 +1,17 @@
 html,
 body,
 #root,
-.App{
-    height:100%;
+.App {
+    height: 100%;
     width: 100%;
-    margin:0;
+    margin: 0;
 }
-    .App > div {
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        right: 50%;
-        left: 50%;
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-    }
+
 .p-already-register {
     white-space: nowrap;
 }
-.logInWrapper{
+
+.logInWrapper {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -26,6 +19,7 @@ body,
 }
 
 .logo {
+    margin-top: 20px;
     width: 175px;
     height: 200px;
 }
@@ -35,6 +29,12 @@ body,
     font-size: 60px;
     color: #A2A2A2;
     margin-top: 0;
+}
+
+.error-invalid {
+    font-size: 11px;
+    color: red;
+    margin: -20px;
 }
 
 @media only screen and (orientation: landscape) {
@@ -49,26 +49,9 @@ body,
     .wrapper {
         margin-top: 0;
     }
-
-        .logInWrapper form input,
-        .wrapper form input {
-            width: 100%;
-        }
 }
 
-@media screen and (max-width: 375px) {
-    .logInWrapper,
-    .wrapper {
-        margin-top: 0;
-    }
-
-        .logInWrapper form input,
-        .wrapper form input {
-            width: 100%;
-        }
-}
-
-@media screen and (max-height : 1500px) {
+@media screen and (max-height: 1500px) {
     .logo {
         width: 198px;
         height: 225px;
@@ -95,7 +78,7 @@ body,
     }
 }
 
-@media screen and (max-height : 1000px) {
+@media screen and (max-height: 1000px) {
     .logo {
         width: 132px;
         height: 150px;
@@ -113,39 +96,54 @@ body,
     .btn-signUp {
         width: 195px;
         height: 53px;
-        font-size: 27px;
+        font-size: 18px;
         line-height: inherit;
     }
 
     .p-already-register {
-        font-size: 23px;
+        font-size: 14px;
     }
 }
 
-@media screen and (max-height : 700px) {
+@media screen and (max-height: 700px) {
+    .error {
+        margin-top: -15px;
+        font-size: 12px;
+        margin-bottom: 0;
+    }
+
     .logo {
         width: 88px;
         height: 100px;
     }
+
     .logo-text {
         font-size: 30px;
     }
-    form input {
-        width: 230px;
-        height: 38px;
+
+    form {
+        gap: 20px;
     }
+
+    form input {
+        width: 260px;
+        height: 48px;
+    }
+
     .btn-signUp {
         width: 130px;
         height: 35px;
         font-size: 18px;
         line-height: inherit;
+        border-radius: 5px;
     }
+
     .p-already-register {
-    font-size: 15px;
+        font-size: 14px;
     }
 }
 
-@media screen and (max-height : 400px) {
+@media screen and (max-height: 400px) {
     .logo {
         width: 59px;
         height: 67px;
@@ -169,5 +167,28 @@ body,
 
     .p-already-register {
         font-size: 10px;
+    }
+
+}
+
+@media (max-width: 375px) {
+    .App > div {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        left: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .logInWrapper,
+    .wrapper {
+        margin-top: 0;
+    }
+
+    .logInWrapper form input,
+    .wrapper form input {
+        width: 110%;
     }
 }

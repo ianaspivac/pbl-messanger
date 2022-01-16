@@ -3,5 +3,14 @@
     flex-direction: row;
     max-width: 1000px;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 0;
+    height: 92vh;
+}
+
+.chats-none {
+    color: #A2A2A2;
+    font-size: 36px;
+    font-weight: 600;
+    margin: auto;
+    padding-bottom: 20px;
 }

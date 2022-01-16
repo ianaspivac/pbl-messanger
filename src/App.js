@@ -1,10 +1,11 @@
 import './App.css';
-import {Switch, Route} from "react-router-dom";
+import {Switch, Route, Redirect} from "react-router-dom";
 import Chats from "./pages/Chats";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn"
 import Popup from "./components/PopupAccount/Popup";
 import {useEffect, useState} from "react";
+import { useSelector } from "react-redux";
 import photo from "./images/photo-default.svg";
 import Header from "./components/Header/Header";
 
@@ -20,6 +21,8 @@ const toDataURL = url => fetch(url)
 
 
 function App() {
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
   const [settingsOpened, setSettingsOpened] = useState(false)
 
   useEffect(() => {
@@ -42,14 +45,17 @@ function App() {
       <Header onOpenSettings={openSettings}/>
       {settingsOpened && <Popup onCloseSettings={closeSettings}/>}
       <Switch>
+        <Route path="/" exact>
+          {!isLoggedIn ? <Redirect to="/login" /> : <Redirect to="/chats" />}
+        </Route>
         <Route path="/chats" exact>
-          <Chats/>
+          {isLoggedIn ? <Chats/> : <Redirect to="/login" />}
         </Route>
         <Route path="/signup" exact>
-          <SignUp/>
+          {!isLoggedIn ? <SignUp/> : <Redirect to="/chats" />}
         </Route>
         <Route path="/login" exact>
-          <LogIn/>
+          {!isLoggedIn ? <LogIn/> : <Redirect to="/chats" />}
         </Route>
       </Switch>
     </div>

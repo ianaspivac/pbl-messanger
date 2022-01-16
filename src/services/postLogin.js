@@ -1,7 +1,7 @@
 export const postLogin = async (body) => {
     try {
         const response = await fetch(
-            'http://localhost:8080/user/login',
+            'http://81.180.72.35:8080/user/login',
             {
                 method: "Post",
                 headers: {

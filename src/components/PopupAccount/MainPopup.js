@@ -1,10 +1,17 @@
 import "./Popup.css"
 import {useState, useEffect} from "react"
+import {useHistory} from "react-router-dom";
 
 function MainPopup(props) {
+  let history = useHistory();
 
   const closeSettings = () => {
     props.onCloseSettings(true)
+  }
+
+  const logout = () =>{
+    localStorage.clear();
+    history.push("/login");
   }
 
   return (
@@ -24,7 +31,7 @@ function MainPopup(props) {
         </button>
       </div>
       <div className="popup-logout">
-        <button className="popup-option-button logout-button">Logout</button>
+        <button className="popup-option-button logout-button" onClick={logout}>Logout</button>
       </div>
     </div>
   );
