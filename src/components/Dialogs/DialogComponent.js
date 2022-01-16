@@ -79,7 +79,7 @@ export default function DialogComponent(props) {
   const resetSearch = () => {
     setDialogs(initialDialogs);
   };
-
+//when working comment this
   useEffect(() => {
     const interval = setInterval(() => {
       getDialogs()
@@ -88,6 +88,11 @@ export default function DialogComponent(props) {
       clearInterval(interval);
     };
   }, [])
+
+  //and uncomment this
+  // useEffect(() => {
+  //   getDialogs()
+  // }, [])
 
   return (
     <div className="dialog-wrapper">

@@ -87,7 +87,7 @@ function ChatMessages(props) {
       })
     setShowAdd(false)
   };
-
+//Please when working, comment this
   useEffect(() => {
     const interval = setInterval(() => {
       getDialog()
@@ -96,6 +96,11 @@ function ChatMessages(props) {
       clearInterval(interval);
     };
   }, [props.roomId])
+
+  //and uncomment this
+  // useEffect(() => {
+  //   getDialog()
+  // }, [props.roomId])
 
   return (
     <div className="chat-messages-container">
