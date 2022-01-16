@@ -1,3 +1,15 @@
+html,
+body,
+#root,
+.App {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.p-already-register {
+    white-space: nowrap;
+}
 
 .logInWrapper {
     margin-top: 20px;
@@ -7,6 +19,7 @@
 }
 
 .logo {
+    margin-top: 20px;
     width: 175px;
     height: 200px;
 }
@@ -22,4 +35,160 @@
     font-size: 11px;
     color: red;
     margin: -20px;
+}
+
+@media only screen and (orientation: landscape) {
+    .logInWrapper,
+    .wrapper {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .logInWrapper,
+    .wrapper {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-height: 1500px) {
+    .logo {
+        width: 198px;
+        height: 225px;
+    }
+
+    .logo-text {
+        font-size: 68px;
+    }
+
+    form input {
+        width: 518px;
+        height: 86px;
+    }
+
+    .btn-signUp {
+        width: 293px;
+        height: 53px;
+        font-size: 41px;
+        line-height: inherit;
+    }
+
+    .p-already-register {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-height: 1000px) {
+    .logo {
+        width: 132px;
+        height: 150px;
+    }
+
+    .logo-text {
+        font-size: 45px;
+    }
+
+    form input {
+        width: 345px;
+        height: 57px;
+    }
+
+    .btn-signUp {
+        width: 195px;
+        height: 53px;
+        font-size: 18px;
+        line-height: inherit;
+    }
+
+    .p-already-register {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-height: 700px) {
+    .error {
+        margin-top: -15px;
+        font-size: 12px;
+        margin-bottom: 0;
+    }
+
+    .logo {
+        width: 88px;
+        height: 100px;
+    }
+
+    .logo-text {
+        font-size: 30px;
+    }
+
+    form {
+        gap: 20px;
+    }
+
+    form input {
+        width: 260px;
+        height: 48px;
+    }
+
+    .btn-signUp {
+        width: 130px;
+        height: 35px;
+        font-size: 18px;
+        line-height: inherit;
+        border-radius: 5px;
+    }
+
+    .p-already-register {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-height: 400px) {
+    .logo {
+        width: 59px;
+        height: 67px;
+    }
+
+    .logo-text {
+        font-size: 20px;
+    }
+
+    form input {
+        width: 154px;
+        height: 26px;
+    }
+
+    .btn-signUp {
+        width: 87px;
+        height: 24px;
+        font-size: 12px;
+        line-height: inherit;
+    }
+
+    .p-already-register {
+        font-size: 10px;
+    }
+
+}
+
+@media (max-width: 375px) {
+    .App > div {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        left: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .logInWrapper,
+    .wrapper {
+        margin-top: 0;
+    }
+
+    .logInWrapper form input,
+    .wrapper form input {
+        width: 110%;
+    }
 }

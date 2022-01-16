@@ -1,8 +1,9 @@
-.wrapper {
+.wrapper{
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    align-items: center;
 }
 
 .header {
@@ -11,6 +12,7 @@
     font-size: 50px;
     color: #A2A2A2;
     text-align: center;
+    white-space: nowrap;
 }
 
 .form {
