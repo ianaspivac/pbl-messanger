@@ -1,3 +1,17 @@
+html,
+body,
+#root,
+.App {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+    .App div.wrapper h1.header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 .wrapper{
     margin-top: 168px
 }
