@@ -13,7 +13,11 @@ body,
         align-items: center;
     }
 .wrapper{
-    margin-top: 168px
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
 }
 
 .header {

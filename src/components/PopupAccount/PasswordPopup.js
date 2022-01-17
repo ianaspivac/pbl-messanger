@@ -19,7 +19,7 @@ function PasswordPopup(props) {
         setConfirmPassword(event.target.value)
     }
     const handleSubmit = () => {
-        console.log(currentPassword, newPassword, confirmPassword)
+      
     }
   const closeSettings = () => {
     props.onCloseSettings()

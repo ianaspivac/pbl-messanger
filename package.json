@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "postcss-normalize": "^10.0.1"
+    "postcss-normalize": "^10.0.1",
+    "react-redux": "^7.2.6"
   }
 }
