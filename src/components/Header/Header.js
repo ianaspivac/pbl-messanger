@@ -16,6 +16,7 @@ function Header(props) {
   const logout = () => {
     localStorage.clear();
     dispatch({ type: "LOGOUT" });
+    localStorage.clear()
     history.replace("/login");
   }
 
