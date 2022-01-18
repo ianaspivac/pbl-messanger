@@ -2,7 +2,8 @@ import {createStore} from "redux";
 
 const initialState = {
   isLoggedIn: !!localStorage.getItem("userId"),
-  userId: localStorage.getItem("userId")
+  userId: localStorage.getItem("userId"),
+  token: localStorage.getItem("token")
 };
 
 const authReducer = (state = initialState, action) => {
@@ -10,7 +11,8 @@ const authReducer = (state = initialState, action) => {
     case "LOGIN":
       return {
         ...state,
-        userId: action.payload,
+        userId: action.payload.id,
+        token: action.payload.token,
         isLoggedIn: true
       };
 
@@ -18,6 +20,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         userId: "",
+        token: "",
         isLoggedIn: false
       };
 

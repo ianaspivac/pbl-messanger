@@ -21,9 +21,13 @@ export default function LogInComponent() {
         if (response.data !== null) {
           dispatch({
             type: "LOGIN",
-            payload: response.data.id.toString()
+            payload: {
+                id: response.data.id.toString(),
+                token: response.data.token.toString()
+            }
           });
           localStorage.setItem('userId', response.data.id.toString())
+          localStorage.setItem('token', response.data.token.toString())
           history.push('/chats');
           setInvalidCredentials(false);
         } else {

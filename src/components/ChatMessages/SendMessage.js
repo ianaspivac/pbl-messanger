@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 
 function SendMessage(props) {
   const userId = useSelector((state) => state.userId);
+  const token = useSelector((state) => state.token);
   const textInputRef = useRef();
 
   const [enteredText, setEnteredText] = useState("");
@@ -16,14 +17,18 @@ function SendMessage(props) {
     event.preventDefault()
     props.onTextSent(event.target.value)
 
+    let bearer  = 'Bearer ' + token;
+
     fetch(
       `http://81.180.72.35:8080/message/create/${userId}`,
       {
         method: "POST",
         body: JSON.stringify({data: enteredText, room_id: props.roomId}),
         headers: {
-          "Content-Type": "application/json",
-        },
+          'Authorization': bearer,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }
       }
     )
       .then((response) => {

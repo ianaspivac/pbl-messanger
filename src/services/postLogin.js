@@ -3,7 +3,7 @@ export const postLogin = async (body) => {
         const response = await fetch(
             'http://81.180.72.35:8080/user/login',
             {
-                method: "Post",
+                method: "POST",
                 headers: {
                     'Content-type': 'application/json',
                 },

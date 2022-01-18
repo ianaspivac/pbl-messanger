@@ -9,6 +9,7 @@ import {useSelector} from "react-redux";
 
 export default function DialogComponent(props) {
   const userId = useSelector((state) => state.userId);
+  const token = useSelector((state) => state.token);
 
   const [dialogs, setDialogs] = useState([]);
   const [initialDialogs, setInitialDialogs] = useState([]);
@@ -21,11 +22,15 @@ export default function DialogComponent(props) {
   };
 
   const getDialogs = () => {
+    let bearer = 'Bearer ' + token;
     fetch(`http://81.180.72.35:8080/room/${userId}`
       , {
+        method: 'GET',
         headers: {
+          'Authorization': bearer,
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+
         }
       }
     ).then(function (response) {
@@ -47,6 +52,7 @@ export default function DialogComponent(props) {
 
   const createRoom = (event) => {
     event.preventDefault();
+    let bearer = 'Bearer ' + token;
     const name = roomNameRef.current.value;
     fetch(
       `http://81.180.72.35:8080/room/create/${userId}`,
@@ -54,8 +60,10 @@ export default function DialogComponent(props) {
         method: "POST",
         body: JSON.stringify({name}),
         headers: {
-          "Content-Type": "application/json",
-        },
+          'Authorization': bearer,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }
       }
     )
       .then((response) => {

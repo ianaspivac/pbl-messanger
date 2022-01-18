@@ -11,6 +11,7 @@ function ChatMessages(props) {
   const [showAdd, setShowAdd] = useState(false);
   const inviteInputRef = useRef();
   const userId = useSelector((state) => state.userId);
+  const token = useSelector((state) => state.token);
 
   const transformUnix = (unixTimestamp) => {
     let date = new Date(unixTimestamp * 1000);
@@ -29,9 +30,12 @@ function ChatMessages(props) {
   }
 
   const getDialog = () => {
+    let bearer  = 'Bearer ' + token;
     fetch(`http://81.180.72.35:8080/message/${props.roomId}`
       , {
+        method: 'GET',
         headers: {
+          'Authorization': bearer,
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         }
